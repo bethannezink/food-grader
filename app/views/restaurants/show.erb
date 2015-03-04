@@ -1,0 +1,9 @@
+
+<h2><%= @restaurant.titleized_name %></h2><br>
+<h4><%= @restaurant.address %><h4><br>
+<h4><%= @restaurant.phone_number %><h4><br>
+<h2>Grade: <%= @restaurant.inspection_grade %><h2><br>
+<% @restaurant.inspections.each do |inspection| %>
+  <p><%= inspection.date %></p>
+  <p><%= inspection.violation_details %></p>
+<% end %>
