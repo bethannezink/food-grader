@@ -5,7 +5,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.string :phone_number
-      t.string :restaurant_style
+      t.string :cuisine_style
       t.string :borough
     end
   end

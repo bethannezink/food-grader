@@ -1,5 +1,12 @@
+<%= erb :'layouts/_header' %>
 
-<form action="/restaurants" method="POST">
+<form action="/search" method="GET">
 <label>Search for a Restaurant</label><br>
-<input type="text" name="name">
+<input type="text" name="query">
 <input type="submit" name="search">
+
+<% if !locals.empty? %>
+<%= message %>
+<% end %>
+
+<%= erb :'layouts/_footer' %>

@@ -1,9 +1,38 @@
+<%= erb :'layouts/_header' %>
+<h1><%= @restaurant.titleized_name %></h1><br>
+<h2><%= @restaurant.formatted_address %><h2><br>
+<h2> Current Grade: <%= @restaurant.inspection_grade %><h2><br>
+<h2>Violations</h2>
+ <% @restaurant.inspections.each do |inspection| %>
+    <table>
+        <thead>
+        <tr>
+          <th rowspan="3"> Inspection Date </th>
+          <th rowspan="3"> Inspection Grade </th>
+          <th rowspan="3"> Inspection Score </th>
+          <th> Violation Code </th>
+          <th> Points Deducted </th>
+          <th> Critical? </th>
+          <th> Violation Details </th>
+        </tr>
+        </thead>
+        <tbody>
+        <% inspection.violations.each do |violation| %> 
+        <tr>
+          <td><%= inspection.display_formatted_date %></td>
+          <td><%= inspection.grade %></td>
+          <td><%= inspection.score %></td>
+          <td><%= violation.code %></td>
+          <td>hi <!--later, this should be violation.number_of_points_deducted--></td>
+          <td><%= violation.severity_level %></td>
+          <td><%= violation.description %></td>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+  <% end %>
+  <%= erb :'layouts/_footer' %>
 
-<h2><%= @restaurant.titleized_name %></h2><br>
-<h4><%= @restaurant.address %><h4><br>
-<h4><%= @restaurant.phone_number %><h4><br>
-<h2>Grade: <%= @restaurant.inspection_grade %><h2><br>
-<% @restaurant.inspections.each do |inspection| %>
-  <p><%= inspection.date %></p>
-  <p><%= inspection.violation_details %></p>
-<% end %>
+
+
+    

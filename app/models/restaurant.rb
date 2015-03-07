@@ -1,9 +1,10 @@
 class Restaurant < ActiveRecord::Base
 
   has_many :inspections
+  has_many :violations, through: :inspections
 
   def slug
-    self.name.downcase.gsub(" ", "-")
+    self.id.to_s
   end
 
   def self.find_by_slug(slug)
@@ -18,14 +19,30 @@ class Restaurant < ActiveRecord::Base
     !!self.name ? self.name.downcase.split.map(&:capitalize).join(" ") : ""
   end
 
-  # add line breaks to address to format
-  # def formatted_address
-  #   !!self.address ? self.address... : "Address not provided"
+  def formatted_address
+    self.address.downcase.split.map(&:capitalize).join(" ")
+  end
+  # # def address_pieces
+  #   self.address.partition(self.borough)
   # end
 
-  # add parantheses to area code -- how to add "(" to beginning of string?
+  # def first_half_address
+  #   !!self.address ? address_pieces[0] : "Address unavailable"
+  # end
+
+  # def second_half_address
+  #   !!self.address ? address_pieces[1] + address_pieces[2]  : ""
+  #   #add a space between pieces 1 and 2, or is that still there from earlier?
+  # end 
+
   # def formatted_phone
-  #   !!self.phone ? self.phone... : "Phone number not provided"
-  #end
+  #   !!self.phone_number ? self.phone_number.insert(0, "(").insert(4, ") ").insert(9, "-") : "Phone number unavailable"
+  # end
+
+  # refactor this bad boy -- right now it doesn't work right
+  # def violation_listed?
+  #   !self.violations.select {|violation| violation.description == nil } ? true : false
+  # end
 
 end
+

@@ -11,15 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 3) do
 
   create_table "inspections", force: :cascade do |t|
-    t.string  "date"
+    t.string  "inspection_date"
+    t.string  "inspection_type"
     t.string  "grade"
     t.integer "score"
-    t.string  "violation_code"
-    t.string  "violation_type"
-    t.string  "violation_details"
+    t.string  "grade_date"
     t.integer "restaurant_id"
   end
 
@@ -27,8 +26,16 @@ ActiveRecord::Schema.define(version: 2) do
     t.string "name"
     t.string "address"
     t.string "phone_number"
-    t.string "restaurant_style"
+    t.string "cuisine_style"
     t.string "borough"
+  end
+
+  create_table "violations", force: :cascade do |t|
+    t.string  "date"
+    t.string  "code"
+    t.string  "severity_level"
+    t.string  "description"
+    t.integer "inspection_id"
   end
 
 end
