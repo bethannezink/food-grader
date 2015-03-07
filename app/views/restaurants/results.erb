@@ -1,0 +1,66 @@
+<h3>There are multiple results for your search. Which <%= @restaurant.first.titleized_name %> would you like to visit?</h3>
+
+<% @restaurant.each do |restaurant| %>
+ <% if restaurant.borough == "Bronx" %>
+  <h4> Bronx </h4>
+  <% break %>
+  <% end %>
+<% end %>
+
+<% @restaurant.each do |restaurant| %>
+<% if restaurant.borough == "Bronx" %>
+<a href="/restaurants/<%= restaurant.slug %>"><%= restaurant.name.downcase.split.map(&:capitalize).join(" ") %></a> - <%= restaurant.formatted_address %><br>
+<% end %>
+<% end %>
+
+<% @restaurant.each do |restaurant| %>
+ <% if restaurant.borough == "Brooklyn" %>
+  <h4> Brooklyn </h4>
+  <% break %>
+  <% end %>
+  <% end %>
+
+<% @restaurant.each do |restaurant| %>
+<% if restaurant.borough == "Brooklyn" %>
+<a href="/restaurants/<%= restaurant.slug %>"><%= restaurant.name.downcase.split.map(&:capitalize).join(" ") %></a> - <%= restaurant.formatted_address %><br>
+<% end %>
+<% end %>
+
+<% @restaurant.each do |restaurant| %>
+ <% if restaurant.borough == "Manhattan" %>
+  <h4> Manhattan </h4>
+  <% break %>
+  <% end %>
+  <% end %>
+
+<% @restaurant.each do |restaurant| %>
+<% if restaurant.borough == "Manhattan" %>
+<a href="/restaurants/<%= restaurant.slug %>"><%= restaurant.name.downcase.split.map(&:capitalize).join(" ") %></a> - <%= restaurant.formatted_address %><br>
+<% end %>
+<% end %>
+
+<% @restaurant.each do |restaurant| %>
+ <% if restaurant.borough == "Queens" %>
+  <h4> Queens </h4>
+  <% break %>
+  <% end %>
+  <% end %>
+
+<% @restaurant.each do |restaurant| %>
+<% if restaurant.borough == "Queens" %>
+<a href="/restaurants/<%= restaurant.slug %>"><%= restaurant.name.downcase.split.map(&:capitalize).join(" ") %></a> - <%= restaurant.formatted_address %><br>
+<% end %>
+<% end %>
+
+<% @restaurant.each do |restaurant| %>
+ <% if restaurant.borough == "Staten island" %>
+  <h4> Staten Island </h4>
+  <% break %>
+  <% end %>
+  <% end %>
+
+<% @restaurant.each do |restaurant| %>
+<% if restaurant.borough == "Staten island" %>
+<a href="/restaurants/<%= restaurant.slug %>"><%= restaurant.name.downcase.split.map(&:capitalize).join(" ") %></a> - <%= restaurant.formatted_address %><br>
+<% end %>
+<% end %>
